@@ -18,7 +18,6 @@ if (( patch != 0 )); then
 else
   kernelprefix="linux-$major.$minor"
 fi
-
 if [[ -f "/usr/src/$kernelprefix.tar.xz" ]]; then
   echo "File /usr/src/$kernelprefix.tar.xz already exists, skipping download."
 else
