@@ -2,6 +2,7 @@
  * serdes.h
  *
  * Copyright (c) 2018-2020 D3 Engineering.  All rights reserved.
+ * Copyright (c) 2023, Define Design Deploy Corp.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -35,6 +36,7 @@
 #include <linux/mutex.h>
 #include <linux/platform_device.h>
 #include <linux/version.h>
+#include <linux/workqueue.h>
 #include <media/media-entity.h>
 #include <media/v4l2-common.h>
 #include <media/v4l2-ctrls.h>
@@ -59,9 +61,9 @@
 #define MAX9X_LINK_FREQ_HZ_TO_MBPS(hz) (((unsigned long long)(hz)*2ULL)/1000000ULL)
 #define MAX9X_LINK_FREQ_MBPS_TO_REG(mbps) ((mbps)/100U)
 
-#define MAX9X_FIELD_PREP(_mask, _val)					\
-	({								\
-		((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask);	\
+#define MAX9X_FIELD_PREP(_mask, _val) \
+	({ \
+		((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask); \
 	})
 
 #define TRY(err, expr) \
@@ -259,6 +261,11 @@ struct max9x_common {
 	struct gpio_desc *reset_gpio;
 	struct regulator *vdd_regulator;
 	bool regulator_enabled;
+
+	struct delayed_work fsin_work;
+	struct gpio_desc *fsin_gpio;
+	unsigned int fsin_hz;
+	bool fsin_enabled;
 
 	struct max9x_common_ops *common_ops;
 	struct max9x_serial_link_ops *serial_link_ops;
