@@ -35,6 +35,7 @@
 #include <linux/mutex.h>
 #include <linux/platform_device.h>
 #include <linux/version.h>
+#include <linux/workqueue.h>
 #include <media/media-entity.h>
 #include <media/v4l2-common.h>
 #include <media/v4l2-ctrls.h>
@@ -257,6 +258,10 @@ struct max9x_common {
 	enum max9x_serdes_type type;
 
 	struct gpio_desc *reset_gpio;
+	struct gpio_desc *fsin_gpio;
+	struct delayed_work fsin_work;
+	unsigned int fsin_hz;
+	bool fsin_enabled;
 	struct regulator *vdd_regulator;
 	bool regulator_enabled;
 

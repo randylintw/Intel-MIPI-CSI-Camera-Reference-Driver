@@ -680,11 +680,52 @@ err_deisolate:
 	return ret;
 }
 
+#define MAX9X_FSIN_HZ_DEFAULT 15
+
+static unsigned long max9x_fsin_half_period(struct max9x_common *common)
+{
+	unsigned int hz = common->fsin_hz ? common->fsin_hz : MAX9X_FSIN_HZ_DEFAULT;
+
+	return max(1UL, (unsigned long)(HZ / (2 * hz)));
+}
+
+static void max9x_fsin_work_fn(struct work_struct *work)
+{
+	struct max9x_common *common =
+		container_of(to_delayed_work(work), struct max9x_common,
+			     fsin_work);
+
+	if (!common->fsin_enabled)
+		return;
+
+	gpiod_set_value_cansleep(common->fsin_gpio,
+				 !gpiod_get_value_cansleep(common->fsin_gpio));
+	schedule_delayed_work(&common->fsin_work, max9x_fsin_half_period(common));
+}
+
+static void max9x_start_fsin_timer(struct max9x_common *common)
+{
+	if (!common->fsin_gpio)
+		return;
+	common->fsin_enabled = true;
+	schedule_delayed_work(&common->fsin_work, max9x_fsin_half_period(common));
+}
+
+static void max9x_stop_fsin_timer(struct max9x_common *common)
+{
+	if (!common->fsin_gpio)
+		return;
+	common->fsin_enabled = false;
+	cancel_delayed_work_sync(&common->fsin_work);
+}
+
 int max9x_common_suspend(struct max9x_common *common)
 {
 	unsigned int link_id;
 
 	dev_dbg(common->dev, "try to suspend");
+
+	max9x_stop_fsin_timer(common);
 
 	for (link_id = 0; link_id < common->num_serial_links; link_id++)
 		max9x_disable_serial_link(common, link_id);
@@ -716,6 +757,16 @@ int max9x_common_init_i2c_client(struct max9x_common *common,
 	if (IS_ERR(common->reset_gpio)) {
 		dev_err(dev, "gpiod_get failed with error: %ld", PTR_ERR(common->reset_gpio));
 		return PTR_ERR(common->reset_gpio);
+	}
+
+	common->fsin_gpio = devm_gpiod_get_optional(dev, "fsin", GPIOD_OUT_LOW);
+	if (IS_ERR(common->fsin_gpio)) {
+		dev_err(dev, "fsin gpiod_get failed: %ld", PTR_ERR(common->fsin_gpio));
+		return PTR_ERR(common->fsin_gpio);
+	}
+	if (common->fsin_gpio) {
+		common->fsin_hz = MAX9X_FSIN_HZ_DEFAULT;
+		INIT_DELAYED_WORK(&common->fsin_work, max9x_fsin_work_fn);
 	}
 
 	common->vdd_regulator = devm_regulator_get_optional(dev, MAX9X_VDD_REGULATOR_NAME);
@@ -828,6 +879,9 @@ int max9x_common_init_i2c_client(struct max9x_common *common,
 	if (ret)
 		goto err_enable;
 
+	if (common->fsin_gpio)
+		max9x_start_fsin_timer(common);
+
 	dev_dbg(dev, "Enable line faults");
 
 	ret = max9x_enable_line_faults(common);
@@ -851,6 +905,7 @@ int max9x_common_init_i2c_client(struct max9x_common *common,
 	goto err_phys_map;
 
 err_enable:
+	max9x_stop_fsin_timer(common);
 	max9x_disable(common);
 
 err_adapters:
@@ -878,6 +933,8 @@ void max9x_destroy(struct max9x_common *common)
 	unsigned int line;
 
 	dev_dbg(common->dev, "Destroy");
+
+	max9x_stop_fsin_timer(common);
 
 	max9x_disable_translations(common);
 
