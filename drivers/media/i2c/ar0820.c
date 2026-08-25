@@ -9,6 +9,7 @@
 #include <linux/gpio.h>
 #include <linux/interrupt.h>
 #include <linux/version.h>
+#include <linux/workqueue.h>
 #if LINUX_VERSION_CODE < KERNEL_VERSION(6, 12, 0)
 #include <asm/unaligned.h>
 #else
@@ -77,9 +78,60 @@ struct ar0820 {
         struct gpio_desc *reset_gpio;
 	struct gpio_desc *fsin_gpio;
 
+        /* Software FSIN generator: periodically toggles fsin_gpio while
+         * streaming so downstream sensors relying on an external sync
+         * pulse keep receiving one even without a dedicated HW fsync source.
+         */
+        struct delayed_work fsin_work;
+        bool fsin_enabled;
+        unsigned int fsin_hz;
+
         /* Streaming on/off */
         bool streaming;
 };
+
+#define AR0820_FSIN_HZ_DEFAULT 1
+
+static unsigned long ar0820_fsin_half_period(struct ar0820 *ar0820)
+{
+        unsigned int hz = ar0820->fsin_hz ? ar0820->fsin_hz : AR0820_FSIN_HZ_DEFAULT;
+
+        return max(1UL, (unsigned long)(HZ / (2 * hz)));
+}
+
+static void ar0820_fsin_work_fn(struct work_struct *work)
+{
+        struct ar0820 *ar0820 = container_of(to_delayed_work(work),
+                                              struct ar0820, fsin_work);
+
+        if (!ar0820->fsin_enabled)
+                return;
+
+        gpiod_set_value_cansleep(ar0820->fsin_gpio,
+                                 !gpiod_get_value_cansleep(ar0820->fsin_gpio));
+        dev_dbg(&ar0820->client->dev, "fsin gpio toggled to: %d\n",
+                gpiod_get_value_cansleep(ar0820->fsin_gpio));
+
+        schedule_delayed_work(&ar0820->fsin_work, ar0820_fsin_half_period(ar0820));
+}
+
+static void ar0820_start_fsin_timer(struct ar0820 *ar0820)
+{
+        if (!ar0820->fsin_gpio || ar0820->fsin_enabled)
+                return;
+
+        ar0820->fsin_enabled = true;
+        schedule_delayed_work(&ar0820->fsin_work, ar0820_fsin_half_period(ar0820));
+}
+
+static void ar0820_stop_fsin_timer(struct ar0820 *ar0820)
+{
+        if (!ar0820->fsin_gpio)
+                return;
+
+        ar0820->fsin_enabled = false;
+        cancel_delayed_work_sync(&ar0820->fsin_work);
+}
 
 static const struct ar0820_reg ar0820_3840_2160_30fps_reg[] = {
 	/* TODO: Waiting for Sensing register list */
@@ -128,6 +180,8 @@ static int ar0820_start_streaming(struct ar0820 *ar0820)
 
         dev_dbg(&client->dev, "%s: Enter", __func__);
 
+        ar0820_start_fsin_timer(ar0820);
+
         return 0;
 }
 
@@ -136,6 +190,8 @@ static int ar0820_stop_streaming(struct ar0820 *ar0820)
         struct i2c_client *client = ar0820->client;
 
         dev_dbg(&client->dev, "%s: Enter", __func__);
+
+        ar0820_stop_fsin_timer(ar0820);
 
 	return 0;	
 }
@@ -214,6 +270,8 @@ static int __maybe_unused ar0820_suspend(struct device *dev)
 		ar0820_stop_streaming(ar0820);
 
 	mutex_unlock(&ar0820->mutex);
+
+	ar0820_stop_fsin_timer(ar0820);
 
 	/* Active low gpio reset, set 1 to power off sensor */
 	if (ar0820->reset_gpio)
@@ -478,6 +536,8 @@ static void ar0820_remove(struct i2c_client *client)
 
         dev_dbg(&client->dev, "%s: Enter", __func__);
 
+        ar0820_stop_fsin_timer(ar0820);
+
         v4l2_async_unregister_subdev(sd);
         media_entity_cleanup(&sd->entity);
         mutex_destroy(&ar0820->mutex);
@@ -531,6 +591,8 @@ static int ar0820_probe(struct i2c_client *client)
                 gpiod_set_value_cansleep(ar0820->fsin_gpio, 1);
                 msleep(500);
                 gpiod_set_value_cansleep(ar0820->fsin_gpio, 0);
+                ar0820->fsin_hz = AR0820_FSIN_HZ_DEFAULT;
+                INIT_DELAYED_WORK(&ar0820->fsin_work, ar0820_fsin_work_fn);
         }
 	
         /* initialize subdevice */
