@@ -76,7 +76,17 @@ Name (_DSD, Package ()          // _DSD: Device-Specific Data
          * 1 is active low for reset
          *
          */
+#ifdef DESCH_SER_FSIN_GPIO
+        /* Frame sync shares SER pin 0 on D457, d4xx.c uses "fsin" instead of "reset" */
+        Package () { "fsin-gpios", Package () { DESCH_SER_GPIOREF, 0, 0, 1 } },
+#else
         Package () { "reset-gpios", Package () { DESCH_SER_GPIOREF, 0, 0, 1 } },
+#endif
+#ifdef EXTERNAL_FRAME_SYNC
+        Package () { "gmsl-frame-sync-enable", EXTERNAL_FRAME_SYNC },
+#else
+        Package () { "gmsl-frame-sync-enable", 0 }, // Disabled by default
+#endif
     },
     ToUUID("dbb8e3e6-5886-4ba6-8795-1319f52a966b"), // Hierarchical Data Extension
     Package ()

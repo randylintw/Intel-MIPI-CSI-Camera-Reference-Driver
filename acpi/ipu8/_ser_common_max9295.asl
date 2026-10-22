@@ -11,6 +11,8 @@
  *   DESCH_SER_I2C        - SER I2C slave address (e.g. 0x40, 0x62), used in I2cSerialBusV2
  *   CAM_ALIAS            - Camera alias I2C address used in i2c-alias-pool in _DSD
  *   DESCH_SER_EXTRA_GPIO_PIN - (Optional) SER Extra GPIO pin number, used in GpioIo
+ *   DESCH_SER_FSIN_GPIO  - (Optional) SER GPIO pin number carrying frame sync (already in the GpioIo list, e.g. 0 for D457)
+ *   DESCH_SER_FSIN_GPIO_2 - (Optional) Second SER frame sync GPIO pin number, appended to the GpioIo list
  *   DESCH_SER_FSYNC_RX_ID - (Optional) GMSL GPIO ID the DES sends frame sync as, used in MFP node
  *   DESCH_SER_X/Y/Z/U_VC - (Optional) SER VC filter for Pipe X/Y/Z/U, specifically for MAX96717 driver
  */
@@ -76,6 +78,9 @@ Name(_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
 #ifdef DESCH_SER_EXTRA_GPIO_PIN
         DESCH_SER_EXTRA_GPIO_PIN,   // Extra pin (e.g. MFP7 on MAX9295)
 #endif
+#ifdef DESCH_SER_FSIN_GPIO_2
+        DESCH_SER_FSIN_GPIO_2,      // Second frame sync pin (e.g. MFP1 on MAX9295)
+#endif
     }
 })
 
@@ -129,6 +134,12 @@ Name (MFP, Package()
         #endif
         #ifdef DESCH_SER_EXTRA_GPIO_PIN
         Package () { "gmsl-frame-sync-gpio-pin", DESCH_SER_EXTRA_GPIO_PIN },
+        #endif
+        #ifdef DESCH_SER_FSIN_GPIO
+        Package () { "gmsl-frame-sync-gpio-pin", DESCH_SER_FSIN_GPIO },
+        #endif
+        #ifdef DESCH_SER_FSIN_GPIO_2
+        Package () { "gmsl-frame-sync-gpio-pin-2", DESCH_SER_FSIN_GPIO_2 },
         #endif
     },
 })
