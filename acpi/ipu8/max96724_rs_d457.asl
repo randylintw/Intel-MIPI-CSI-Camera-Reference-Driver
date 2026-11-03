@@ -52,9 +52,9 @@ DefinitionBlock ("", "SSDT", 2, "", "IMG_IPU", 0x20260513)
             #define DES_PHY_TYPE 0
             #define DES_I2C_ADDR 0x0027
             #define DES_LANES 2
-            #define DES_INTERNAL_PHY 6
+            #define DES_INTERNAL_PHY 4
             #define DES_TO_MIPI_PORT 0
-            #define DES_I2C_BUS "\\_SB.PC00.I2C1"
+            #define DES_I2C_BUS "\\_SB.PC00.I2C0"
             #define DES_PATH "\\_SB.PC00.DES0"
             #define DES_REF \_SB.PC00.DES0
             #define DES_PIPE_STR_AUTOSELECT 0

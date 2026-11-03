@@ -9,6 +9,7 @@
  *   DESCH_SER_PATH       - Path to SER (e.g. "\\_SB.PC00.DESx.CHxx.SERx"), used in GpioIo
  *   DESCH_LINK_NUM       - DES channel number (e.g. 0 for CH00, 1 for CH01), used in CSI2Bus
  *   DESCH_SER_I2C        - SER I2C slave address (e.g. 0x40, 0x62), used in I2cSerialBusV2
+ *   SER_HID              - (Optional) SER ACPI HID, defaults to INTC1138 (MAX9295A); INTC1141 for MAX96717
  *   CAM_ALIAS            - Camera alias I2C address used in i2c-alias-pool in _DSD
  *   DESCH_SER_EXTRA_GPIO_PIN - (Optional) SER Extra GPIO pin number, used in GpioIo
  *   DESCH_SER_FSIN_GPIO  - (Optional) SER GPIO pin number carrying frame sync (already in the GpioIo list, e.g. 0 for D457)
@@ -24,7 +25,11 @@ Method (_STA, 0, NotSerialized) // _STA: Status
 
 Method (_HID, 0, NotSerialized) // _HID: Hardware ID
 {
+#ifdef SER_HID
+    Return (SER_HID)            // e.g. "INTC1141" for MAX96717
+#else
     Return ("INTC1138")         // MAX9295A
+#endif
 }
 
 Name (_DEP, Package (0x01)      // _DEP: Dependencies

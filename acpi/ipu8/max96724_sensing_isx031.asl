@@ -4,7 +4,7 @@
  *
  * SSDT overlay: Sensing ISX031 GMSL camera configuration on PTL platform.
  *   One MAX96724 deserializer (DES0) with CPHY connection to PTL platform,
- *   carrying Sensing-vendor ISX031 cameras over GMSL links, fronted by MAX9295A serializers.
+ *   carrying Sensing-vendor ISX031 cameras over GMSL links, fronted by MAX96717 serializers.
  *   Each channel adds an extra SER GPIO pin and routes a camera FSIN GPIO for frame-sync.
  *
  * DES-level defines (set per DESx, undef'd at the end of each Device):
@@ -22,13 +22,14 @@
  *   DESCH_CH                 - Channel device name (e.g. CH00)
  *   DESCH_SER                - Serializer device name (e.g. SER0)
  *   DESCH_CAM                - Camera device name (e.g. CAM0)
- *   DESCH_SER_I2C            - SER I2C slave address (e.g. 0x40 for MAX9295A)
+ *   DESCH_SER_I2C            - SER I2C slave address (e.g. 0x40 for MAX96717)
  *   DESCH_CH_PATH            - CHxx ACPI path string (e.g. "\\_SB.PC00.DES0.CH00")
  *   DESCH_SER_PATH           - SERx ACPI path string (e.g. "\\_SB.PC00.DES0.CH00.SER0")
  *   DESCH_SER_REF            - SERx ACPI namespace reference (e.g. \_SB.PC00.DES0.CH00.SER0)
  *   DESCH_SER_GPIOREF        - SERx GPIO controller reference (e.g. ^^SER0)
  *   DESCH_SER_EXTRA_GPIO_PIN - Optional: Extra SER GPIO pin number
  *   EXTERNAL_FRAME_SYNC      - Optional: Camera external frame sync FSIN GPIO enablement
+ *   SER_HID                  - SER ACPI HID ("INTC1141" for MAX96717)
  *   CAM_ALIAS                - Camera alias I2C address used in i2c-alias-pool of the SER
  *   CAM_LANES                - Number of MIPI data lanes for the camera (e.g. 2, 4)
  */
@@ -47,14 +48,14 @@ DefinitionBlock ("", "SSDT", 2, "", "IMG_IPU", 0x20260513)
             #define DES_PHY_TYPE 0
             #define DES_I2C_ADDR 0x0027
             #define DES_LANES 2
-            #define DES_INTERNAL_PHY 6
+            #define DES_INTERNAL_PHY 4
             #define DES_TO_MIPI_PORT 0
-            #define DES_I2C_BUS "\\_SB.PC00.I2C1"
+            #define DES_I2C_BUS "\\_SB.PC00.I2C0"
             #define DES_PATH "\\_SB.PC00.DES0"
             #define DES_REF \_SB.PC00.DES0
             #include "_des_common_max96724.asl"
 
-            // Channel 0 (with extra GPIO pin 7 and fsin-gpios)
+            // Channel 0 
             #define DESCH_LINK_NUM 0
             #define DESCH_CH CH00
             #define DESCH_SER SER0
@@ -64,6 +65,7 @@ DefinitionBlock ("", "SSDT", 2, "", "IMG_IPU", 0x20260513)
             #define DESCH_SER_PATH "\\_SB.PC00.DES0.CH00.SER0"
             #define DESCH_SER_REF \_SB.PC00.DES0.CH00.SER0
             #define DESCH_SER_GPIOREF ^^SER0
+            #define SER_HID "INTC1141"
             #define CAM_ALIAS 0x54
             #define CAM_LANES 4
             #include "_des_ch_common_isx031.asl"
@@ -77,8 +79,94 @@ DefinitionBlock ("", "SSDT", 2, "", "IMG_IPU", 0x20260513)
             #undef DESCH_LINK_NUM
             #undef DESCH_SER_I2C
             #undef DESCH_SER_GPIOREF
+            #undef SER_HID
             #undef CAM_ALIAS
             #undef CAM_LANES
+
+            // Channel 1
+            #define DESCH_LINK_NUM 1
+            #define DESCH_CH CH01
+            #define DESCH_SER SER1
+            #define DESCH_CAM CAM1
+            #define DESCH_SER_I2C 0x40
+            #define DESCH_CH_PATH "\\_SB.PC00.DES0.CH01"
+            #define DESCH_SER_PATH "\\_SB.PC00.DES0.CH01.SER1"
+            #define DESCH_SER_REF \_SB.PC00.DES0.CH01.SER1
+            #define DESCH_SER_GPIOREF ^^SER1
+            #define SER_HID "INTC1141"
+            #define CAM_ALIAS 0x55
+            #define CAM_LANES 4
+            #include "_des_ch_common_isx031.asl"
+
+            #undef DESCH_CH
+            #undef DESCH_SER
+            #undef DESCH_CAM
+            #undef DESCH_CH_PATH
+            #undef DESCH_SER_PATH
+            #undef DESCH_SER_REF
+            #undef DESCH_LINK_NUM
+            #undef DESCH_SER_I2C
+            #undef DESCH_SER_GPIOREF
+            #undef SER_HID
+            #undef CAM_ALIAS
+            #undef CAM_LANES
+
+            // Channel 2
+            #define DESCH_LINK_NUM 2
+            #define DESCH_CH CH02
+            #define DESCH_SER SER2
+            #define DESCH_CAM CAM2
+            #define DESCH_SER_I2C 0x40
+            #define DESCH_CH_PATH "\\_SB.PC00.DES0.CH02"
+            #define DESCH_SER_PATH "\\_SB.PC00.DES0.CH02.SER2"
+            #define DESCH_SER_REF \_SB.PC00.DES0.CH02.SER2
+            #define DESCH_SER_GPIOREF ^^SER2
+            #define SER_HID "INTC1141"
+            #define CAM_ALIAS 0x56
+            #define CAM_LANES 4
+            #include "_des_ch_common_isx031.asl"
+
+            #undef DESCH_CH
+            #undef DESCH_SER
+            #undef DESCH_CAM
+            #undef DESCH_CH_PATH
+            #undef DESCH_SER_PATH
+            #undef DESCH_SER_REF
+            #undef DESCH_LINK_NUM
+            #undef DESCH_SER_I2C
+            #undef DESCH_SER_GPIOREF
+            #undef SER_HID
+            #undef CAM_ALIAS
+            #undef CAM_LANES
+
+            // Channel 3
+            #define DESCH_LINK_NUM 3
+            #define DESCH_CH CH03
+            #define DESCH_SER SER3
+            #define DESCH_CAM CAM3
+            #define DESCH_SER_I2C 0x40
+            #define DESCH_CH_PATH "\\_SB.PC00.DES0.CH03"
+            #define DESCH_SER_PATH "\\_SB.PC00.DES0.CH03.SER3"
+            #define DESCH_SER_REF \_SB.PC00.DES0.CH03.SER3
+            #define DESCH_SER_GPIOREF ^^SER3
+            #define SER_HID "INTC1141"
+            #define CAM_ALIAS 0x57
+            #define CAM_LANES 4
+            #include "_des_ch_common_isx031.asl"
+
+            #undef DESCH_CH
+            #undef DESCH_SER
+            #undef DESCH_CAM
+            #undef DESCH_CH_PATH
+            #undef DESCH_SER_PATH
+            #undef DESCH_SER_REF
+            #undef DESCH_LINK_NUM
+            #undef DESCH_SER_I2C
+            #undef DESCH_SER_GPIOREF
+            #undef SER_HID
+            #undef CAM_ALIAS
+            #undef CAM_LANES
+
 #ifdef DESCH_SER_EXTRA_GPIO_PIN
             #undef DESCH_SER_EXTRA_GPIO_PIN
 #endif
