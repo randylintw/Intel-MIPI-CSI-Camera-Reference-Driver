@@ -1,0 +1,1 @@
+make -j16 KERNELRELEASE=7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z KERNELRELEASE=7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z DRIVER_VERSION_SUFFIX='0.1' KERNEL_SRC=/lib/modules/7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/build

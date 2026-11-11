@@ -1,0 +1,221 @@
+DKMS make.log for ipu-camera-sensor-0.1 for kernel 7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z (x86_64)
+Thu Nov 12 06:40:30 AM JST 2026
+make -C /lib/modules/7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/build M=/var/lib/dkms/ipu-camera-sensor/0.1/build modules
+make[1]: Entering directory '/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z'
+make[2]: Entering directory '/var/lib/dkms/ipu-camera-sensor/0.1/build'
+  CC [M]  drivers/media/platform/intel/ipu-acpi.o
+  CC [M]  drivers/media/platform/intel/ipu-acpi-pdata.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-async.o
+  CC [M]  7.0.0/drivers/media/pci/intel/ipu-bridge.o
+  CC [M]  drivers/media/platform/intel/ipu-acpi-common.o
+  CC [M]  7.0.0/drivers/media/mc/mc-device.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-cci.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6.o
+  CC [M]  7.0.0/drivers/media/mc/mc-devnode.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-bus.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-flash-led-class.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-fwnode.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/psys/ipu-psys.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max_serdes.o
+  CC [M]  drivers/media/i2c/max9x/serdes.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu-psys.o
+7.0.0/drivers/media/v4l2-core/v4l2-fwnode.c:1252:5: warning: no previous prototype for ‘__v4l2_async_register_subdev_sensor’ [-Wmissing-prototypes]
+ 1252 | int __v4l2_async_register_subdev_sensor(struct v4l2_subdev *sd, struct module *module)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu-fw-psys.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max_ser.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max_des.o
+  CC [M]  drivers/media/i2c/ar0233.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-dma.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/psys/ipu7-psys.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu-fw-resources.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-mem2mem.o
+  CC [M]  drivers/media/i2c/max9x/regmap-retry.o
+  CC [M]  7.0.0/drivers/media/mc/mc-entity.o
+  CC [M]  7.0.0/drivers/media/mc/mc-request.o
+  CC [M]  drivers/media/i2c/ar0234.o
+  CC [M]  drivers/media/i2c/max9x/max9296.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-dv-timings.o
+In file included from drivers/media/i2c/maxim-serdes/max_ser.h:13,
+                 from drivers/media/i2c/maxim-serdes/max_ser.c:21:
+drivers/media/i2c/maxim-serdes/max_serdes.h:28: warning: "field_get" redefined
+   28 | #define field_get(mask, val) (((val) & (mask)) >> __ffs(mask))
+      | 
+In file included from drivers/media/i2c/maxim-serdes/max_ser.c:10:
+/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/include/linux/bitfield.h:299: note: this is the location of the previous definition
+  299 | #define field_get(mask, reg)                                            \
+      | 
+drivers/media/i2c/maxim-serdes/max_serdes.h:29: warning: "field_prep" redefined
+   29 | #define field_prep(mask, val) (((val) << __ffs(mask)) & (mask))
+      | 
+/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/include/linux/bitfield.h:279: note: this is the location of the previous definition
+  279 | #define field_prep(mask, val)                                           \
+      | 
+drivers/media/i2c/maxim-serdes/max_ser.c: In function ‘max_ser_parse_pipe_config’:
+drivers/media/i2c/maxim-serdes/max_ser.c:2051:21: warning: unused variable ‘enable’ [-Wunused-variable]
+ 2051 |                 u32 enable;
+      |                     ^~~~~~
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/psys/ipu7-fw-psys.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max96717.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max96724.o
+drivers/media/i2c/ar0233.c: In function ‘ar0233_resume’:
+drivers/media/i2c/ar0233.c:274:1: warning: label ‘unlock’ defined but not used [-Wunused-label]
+  274 | unlock:
+      | ^~~~~~
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu-resources.o
+drivers/media/i2c/maxim-serdes/max_ser.c: In function ‘max_ser_assign_vc_remaps’:
+drivers/media/i2c/maxim-serdes/max_ser.c:1280:36: warning: argument to variable-length array may be too large [-Wvla-larger-than=]
+ 1280 |         struct max_serdes_vc_remap local_remaps[ser->ops->num_pipes];
+      |                                    ^~~~~~~~~~~~
+drivers/media/i2c/maxim-serdes/max_ser.c:1281:14: warning: argument to variable-length array may be too large [-Wvla-larger-than=]
+ 1281 |         bool pipe_set[ser->ops->num_pipes];
+      |              ^~~~~~~~
+  CC [M]  drivers/media/i2c/ar0820.o
+In function ‘max_ser_parse_pipe_config’,
+    inlined from ‘max_ser_parse_dt’ at drivers/media/i2c/maxim-serdes/max_ser.c:2233:8,
+    inlined from ‘max_ser_probe’ at drivers/media/i2c/maxim-serdes/max_ser.c:2302:8:
+drivers/media/i2c/maxim-serdes/max_ser.c:2078:29: warning: argument to variable-length array may be too large [-Wvla-larger-than=]
+ 2078 |                         u32 vcs[count];
+      |                             ^~~
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-bus.o
+  CC [M]  7.0.0/drivers/media/mc/mc-dev-allocator.o
+  CC [M]  drivers/media/i2c/ar0830.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-dev.o
+  CC [M]  drivers/media/i2c/max9x/max96724.o
+  LD [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/psys/intel-ipu7-psys.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6-psys.o
+drivers/media/i2c/ar0820.c: In function ‘ar0820_resume’:
+drivers/media/i2c/ar0820.c:274:1: warning: label ‘unlock’ defined but not used [-Wunused-label]
+  274 | unlock:
+      | ^~~~~~
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-mmu.o
+In file included from drivers/media/i2c/maxim-serdes/max_ser.h:13,
+                 from drivers/media/i2c/maxim-serdes/max96717.c:19:
+drivers/media/i2c/maxim-serdes/max_serdes.h:28: warning: "field_get" redefined
+   28 | #define field_get(mask, val) (((val) & (mask)) >> __ffs(mask))
+      | 
+In file included from drivers/media/i2c/maxim-serdes/max96717.c:8:
+/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/include/linux/bitfield.h:299: note: this is the location of the previous definition
+  299 | #define field_get(mask, reg)                                            \
+      | 
+drivers/media/i2c/maxim-serdes/max_serdes.h:29: warning: "field_prep" redefined
+   29 | #define field_prep(mask, val) (((val) << __ffs(mask)) & (mask))
+      | 
+/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/include/linux/bitfield.h:279: note: this is the location of the previous definition
+  279 | #define field_prep(mask, val)                                           \
+      | 
+In file included from drivers/media/i2c/maxim-serdes/max_des.h:11,
+                 from drivers/media/i2c/maxim-serdes/max96724.c:18:
+drivers/media/i2c/maxim-serdes/max_serdes.h:28: warning: "field_get" redefined
+   28 | #define field_get(mask, val) (((val) & (mask)) >> __ffs(mask))
+      | 
+In file included from drivers/media/i2c/maxim-serdes/max96724.c:8:
+/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/include/linux/bitfield.h:299: note: this is the location of the previous definition
+  299 | #define field_get(mask, reg)                                            \
+      | 
+drivers/media/i2c/maxim-serdes/max_serdes.h:29: warning: "field_prep" redefined
+   29 | #define field_prep(mask, val) (((val) << __ffs(mask)) & (mask))
+      | 
+/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/include/linux/bitfield.h:279: note: this is the location of the previous definition
+  279 | #define field_prep(mask, val)                                           \
+      | 
+  CC [M]  drivers/media/i2c/isx031.o
+drivers/media/i2c/isx031.c:3:1: error: expected identifier or ‘(’ before numeric constant
+    3 | 1
+      | ^
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-ioctl.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max9296a.o
+drivers/media/i2c/ar0830.c:23:12: warning: ‘ar0830_read_reg’ defined but not used [-Wunused-function]
+   23 | static int ar0830_read_reg(struct ar0830 *ar0830, u16 reg, u16 len, u32 *val)
+      |            ^~~~~~~~~~~~~~~
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-dma.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6-ppg.o
+  CC [M]  drivers/media/i2c/max9x/max9295.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-buttress.o
+  LD [M]  7.0.0/drivers/media/mc/mc.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-device.o
+  CC [M]  drivers/media/i2c/max9x/max96717.o
+drivers/media/i2c/maxim-serdes/max_des.c: In function ‘max_des_update_streams.isra’:
+drivers/media/i2c/maxim-serdes/max_des.c:2728:1: warning: the frame size of 1168 bytes is larger than 1024 bytes [-Wframe-larger-than=]
+ 2728 | }
+      | ^
+  CC [M]  drivers/media/i2c/lt6911uxc.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6-l-scheduler.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-fh.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-cpd.o
+make[5]: *** [/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/scripts/Makefile.build:289: drivers/media/i2c/isx031.o] Error 1
+make[5]: *** Waiting for unfinished jobs....
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-fw-com.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-mmu.o
+In file included from drivers/media/i2c/maxim-serdes/max_des.h:11,
+                 from drivers/media/i2c/maxim-serdes/max9296a.c:16:
+drivers/media/i2c/maxim-serdes/max_serdes.h:28: warning: "field_get" redefined
+   28 | #define field_get(mask, val) (((val) & (mask)) >> __ffs(mask))
+      | 
+In file included from drivers/media/i2c/maxim-serdes/max9296a.c:8:
+/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/include/linux/bitfield.h:299: note: this is the location of the previous definition
+  299 | #define field_get(mask, reg)                                            \
+      | 
+drivers/media/i2c/maxim-serdes/max_serdes.h:29: warning: "field_prep" redefined
+   29 | #define field_prep(mask, val) (((val) << __ffs(mask)) & (mask))
+      | 
+/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/include/linux/bitfield.h:279: note: this is the location of the previous definition
+  279 | #define field_prep(mask, val)                                           \
+      | 
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6-fw-resources.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-buttress.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-trace.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-cpd.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-event.o
+  LD [M]  drivers/media/i2c/maxim-serdes/max-serdes.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-syscom.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-subdev.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-common.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6se-fw-resources.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-boot.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6ep-fw-resources.o
+  LD [M]  drivers/media/i2c/max9x/max9x.o
+make[4]: *** [/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/scripts/Makefile.build:548: drivers/media/i2c] Error 2
+make[4]: *** Waiting for unfinished jobs....
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-ctrls-core.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-fw-isys.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-ctrls-api.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-ctrls-request.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-ctrls-defs.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-queue.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.o
+  LD [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/intel-ipu6-psys.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-compat-ioctl32.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-csi2.o
+ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c: In function ‘get_remote_pad_stream’:
+ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c:1067:22: warning: unused variable ‘i’ [-Wunused-variable]
+ 1067 |         unsigned int i;
+      |                      ^
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-mc.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-subdev.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-spi.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-csi-phy.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-trace.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-fw-isys.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-mcd-phy.o
+  CC [M]  7.0.0/drivers/media/v4l2-core/v4l2-i2c.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-video.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-queue.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-jsl-phy.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-subdev.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-dwc-phy.o
+  LD [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/intel-ipu7.o
+  LD [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/intel-ipu6.o
+  LD [M]  7.0.0/drivers/media/v4l2-core/videodev.o
+  LD [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/intel-ipu6-isys.o
+  LD [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/intel-ipu7-isys.o
+make[3]: *** [/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/Makefile:2105: .] Error 2
+make[2]: *** [/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/Makefile:248: __sub-make] Error 2
+make[2]: Leaving directory '/var/lib/dkms/ipu-camera-sensor/0.1/build'
+make[1]: *** [Makefile:248: __sub-make] Error 2
+make[1]: Leaving directory '/usr/src/linux-headers-7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z'
+make: *** [Makefile:147: all] Error 2
