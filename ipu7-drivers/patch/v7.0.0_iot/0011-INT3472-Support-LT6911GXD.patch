@@ -1,0 +1,26 @@
+From e0f87e2f32d7a1a0c4a3513cffe57b5464a7e212 Mon Sep 17 00:00:00 2001
+From: linya14x <linx.yang@intel.com>
+Date: Mon, 8 Sep 2025 15:41:24 +0800
+Subject: [PATCH 11/23] INT3472: Support LT6911GXD
+
+Signed-off-by: linya14x <linx.yang@intel.com>
+---
+ drivers/platform/x86/intel/int3472/discrete.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/intel/int3472/discrete.c b/drivers/platform/x86/intel/int3472/discrete.c
+index 1c65ce87cde0..980a7ff33966 100644
+--- a/drivers/platform/x86/intel/int3472/discrete.c
++++ b/drivers/platform/x86/intel/int3472/discrete.c
+@@ -461,7 +461,7 @@ static int skl_int3472_discrete_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+
+-	if (cldb.control_logic_type != 1) {
++	if (cldb.control_logic_type != 1 && cldb.control_logic_type != 5) {
+ 		dev_err(&pdev->dev, "Unsupported control logic type %u\n",
+ 			cldb.control_logic_type);
+ 		return -EINVAL;
+--
+2.43.0
+

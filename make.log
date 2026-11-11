@@ -1,0 +1,165 @@
+DKMS make.log for ipu-camera-sensor-0.1 for kernel 6.18.37-lts-v6.18.37-deb-overlay-260713t060441z (x86_64)
+Thu Nov 12 07:27:59 AM JST 2026
+make -C /lib/modules/6.18.37-lts-v6.18.37-deb-overlay-260713t060441z/build M=/var/lib/dkms/ipu-camera-sensor/0.1/build modules
+make[1]: Entering directory '/usr/src/linux-headers-6.18.37-lts-v6.18.37-deb-overlay-260713t060441z'
+make[2]: Entering directory '/var/lib/dkms/ipu-camera-sensor/0.1/build'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: gcc (Ubuntu 13.3.0-6ubuntu2) 13.3.0
+  You are using:           gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+  CC [M]  drivers/media/platform/intel/ipu-acpi.o
+  CC [M]  drivers/media/platform/intel/ipu-acpi-pdata.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-async.o
+  CC [M]  6.18.0/drivers/media/pci/intel/ipu-bridge.o
+  CC [M]  6.18.0/drivers/media/mc/mc-device.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6.o
+  CC [M]  drivers/media/platform/intel/ipu-acpi-common.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-cci.o
+  CC [M]  6.18.0/drivers/media/mc/mc-devnode.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-bus.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-dma.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-flash-led-class.o
+  CC [M]  6.18.0/drivers/media/mc/mc-entity.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu-psys.o
+  CC [M]  drivers/media/i2c/max9x/serdes.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/psys/ipu-psys.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-fwnode.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu-fw-psys.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-mem2mem.o
+6.18.0/drivers/media/v4l2-core/v4l2-fwnode.c:1249:5: warning: no previous prototype for ‘__v4l2_async_register_subdev_sensor’ [-Wmissing-prototypes]
+ 1249 | int __v4l2_async_register_subdev_sensor(struct v4l2_subdev *sd, struct module *module)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-dv-timings.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu-fw-resources.o
+  CC [M]  drivers/media/i2c/max9x/regmap-retry.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-bus.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/psys/ipu7-psys.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-mmu.o
+  CC [M]  6.18.0/drivers/media/mc/mc-request.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max_serdes.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-dma.o
+  CC [M]  drivers/media/i2c/max9x/max9296.o
+  CC [M]  drivers/media/i2c/max9x/max96724.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/psys/ipu7-fw-psys.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu-resources.o
+  CC [M]  6.18.0/drivers/media/mc/mc-dev-allocator.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max_ser.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-buttress.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max_des.o
+  CC [M]  drivers/media/i2c/max9x/max9295.o
+  LD [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/psys/intel-ipu7-psys.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-mmu.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6-psys.o
+drivers/media/i2c/maxim-serdes/max_ser.c: In function ‘max_ser_parse_pipe_config’:
+drivers/media/i2c/maxim-serdes/max_ser.c:2051:21: warning: unused variable ‘enable’ [-Wunused-variable]
+ 2051 |                 u32 enable;
+      |                     ^~~~~~
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-buttress.o
+  CC [M]  drivers/media/i2c/max9x/max96717.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-cpd.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6-ppg.o
+drivers/media/i2c/maxim-serdes/max_ser.c: In function ‘max_ser_assign_vc_remaps’:
+drivers/media/i2c/maxim-serdes/max_ser.c:1280:36: warning: argument to variable-length array may be too large [-Wvla-larger-than=]
+ 1280 |         struct max_serdes_vc_remap local_remaps[ser->ops->num_pipes];
+      |                                    ^~~~~~~~~~~~
+drivers/media/i2c/maxim-serdes/max_ser.c:1281:14: warning: argument to variable-length array may be too large [-Wvla-larger-than=]
+ 1281 |         bool pipe_set[ser->ops->num_pipes];
+      |              ^~~~~~~~
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-cpd.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max96717.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-dev.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6-l-scheduler.o
+In function ‘max_ser_parse_pipe_config’,
+    inlined from ‘max_ser_parse_dt’ at drivers/media/i2c/maxim-serdes/max_ser.c:2233:8,
+    inlined from ‘max_ser_probe’ at drivers/media/i2c/maxim-serdes/max_ser.c:2302:8:
+drivers/media/i2c/maxim-serdes/max_ser.c:2078:29: warning: argument to variable-length array may be too large [-Wvla-larger-than=]
+ 2078 |                         u32 vcs[count];
+      |                             ^~~
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-fw-com.o
+  LD [M]  6.18.0/drivers/media/mc/mc.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-syscom.o
+  CC [M]  drivers/media/i2c/ar0233.o
+  CC [M]  drivers/media/i2c/ar0234.o
+  LD [M]  drivers/media/i2c/max9x/max9x.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6-fw-resources.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max96724.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-boot.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-ioctl.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6se-fw-resources.o
+  CC [M]  drivers/media/i2c/ar0820.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-trace.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-device.o
+drivers/media/i2c/ar0233.c: In function ‘ar0233_resume’:
+drivers/media/i2c/ar0233.c:274:1: warning: label ‘unlock’ defined but not used [-Wunused-label]
+  274 | unlock:
+      | ^~~~~~
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/ipu6ep-fw-resources.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-csi2.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-fh.o
+  CC [M]  drivers/media/i2c/maxim-serdes/max9296a.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys.o
+drivers/media/i2c/maxim-serdes/max_des.c: In function ‘max_des_update_streams.isra’:
+drivers/media/i2c/maxim-serdes/max_des.c:2728:1: warning: the frame size of 1168 bytes is larger than 1024 bytes [-Wframe-larger-than=]
+ 2728 | }
+      | ^
+  CC [M]  drivers/media/i2c/ar0830.o
+drivers/media/i2c/ar0820.c: In function ‘ar0820_resume’:
+drivers/media/i2c/ar0820.c:274:1: warning: label ‘unlock’ defined but not used [-Wunused-label]
+  274 | unlock:
+      | ^~~~~~
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.o
+  LD [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/psys/intel-ipu6-psys.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-event.o
+  CC [M]  drivers/media/i2c/isx031.o
+drivers/media/i2c/isx031.c:3:1: error: expected identifier or ‘(’ before numeric constant
+    3 | 1
+      | ^
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-fw-isys.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-csi-phy.o
+  CC [M]  drivers/media/i2c/lt6911uxc.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-fw-isys.o
+drivers/media/i2c/ar0830.c:23:12: warning: ‘ar0830_read_reg’ defined but not used [-Wunused-function]
+   23 | static int ar0830_read_reg(struct ar0830 *ar0830, u16 reg, u16 len, u32 *val)
+      |            ^~~~~~~~~~~~~~~
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-subdev.o
+  CC [M]  drivers/media/i2c/lt6911uxe.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-video.o
+  LD [M]  drivers/media/i2c/maxim-serdes/max-serdes.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-common.o
+make[5]: *** [/usr/src/linux-headers-6.18.37-lts-v6.18.37-deb-overlay-260713t060441z/scripts/Makefile.build:287: drivers/media/i2c/isx031.o] Error 1
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-queue.o
+make[5]: *** Waiting for unfinished jobs....
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-queue.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-ctrls-core.o
+  CC [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-subdev.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-subdev.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-ctrls-api.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-ctrls-request.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-mcd-phy.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-ctrls-defs.o
+  LD [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/intel-ipu7.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-compat-ioctl32.o
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-jsl-phy.o
+make[4]: *** [/usr/src/linux-headers-6.18.37-lts-v6.18.37-deb-overlay-260713t060441z/scripts/Makefile.build:544: drivers/media/i2c] Error 2
+make[4]: *** Waiting for unfinished jobs....
+  CC [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-dwc-phy.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-mc.o
+  LD [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/intel-ipu6.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-spi.o
+ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c: In function ‘get_remote_pad_stream’:
+ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c:1067:22: warning: unused variable ‘i’ [-Wunused-variable]
+ 1067 |         unsigned int i;
+      |                      ^
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-trace.o
+  LD [M]  ipu7-drivers/drivers/media/pci/intel/ipu7/intel-ipu7-isys.o
+  CC [M]  6.18.0/drivers/media/v4l2-core/v4l2-i2c.o
+  LD [M]  ipu6-drivers/drivers/media/pci/intel/ipu6/intel-ipu6-isys.o
+  LD [M]  6.18.0/drivers/media/v4l2-core/videodev.o
+make[3]: *** [/usr/src/linux-headers-6.18.37-lts-v6.18.37-deb-overlay-260713t060441z/Makefile:2027: .] Error 2
+make[2]: *** [/usr/src/linux-headers-6.18.37-lts-v6.18.37-deb-overlay-260713t060441z/Makefile:248: __sub-make] Error 2
+make[2]: Leaving directory '/var/lib/dkms/ipu-camera-sensor/0.1/build'
+make[1]: *** [Makefile:248: __sub-make] Error 2
+make[1]: Leaving directory '/usr/src/linux-headers-6.18.37-lts-v6.18.37-deb-overlay-260713t060441z'
+make: *** [Makefile:147: all] Error 2

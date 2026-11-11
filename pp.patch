@@ -1,0 +1,202 @@
+xtracting: linux-7.0/include/uapi/linux/media.h
+linux-7.0/include/uapi/linux/media.h
+Extracting: linux-7.0/drivers/media/pci/intel/Kconfig
+linux-7.0/drivers/media/pci/intel/Kconfig
+
+Extracting: linux-7.0/drivers/media/pci/intel/Makefile
+
+linux-7.0/drivers/media/pci/intel/Makefile
+Extracting: linux-7.0/drivers/media/pci/intel/ipu-bridge.c
+
+
+linux-7.0/drivers/media/pci/intel/ipu-bridge.c
+
+Kernel config /lib/modules/7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/build/.config not found, modules won't be signed
+applying patch 0069-media-v4l2-async-register-subdev-sensor-api.patch...patching file drivers/media/v4l2-core/v4l2-fwnode.c
+Hunk #1 succeeded at 1249 (offset -6 lines).
+Hunk #2 succeeded at 1275 (offset -3 lines).
+Hunk #3 succeeded at 1293 (offset 3 lines).
+patch unexpectedly ends in middle of line
+
+applying patch 7.0/0004-dkms-v4l2-core-makefile-adaptation.patch...patching file 7.0.0/drivers/media/v4l2-core/Makefile
+patching file 7.0.0/drivers/media/v4l2-core/v4l2-dev.c
+Hunk #1 succeeded at 1256 (offset 11 lines).
+
+applying patch 7.0/0005-drivers-media-set-v4l2_subdev_enable_streams_api.patch...patching file 7.0.0/drivers/media/v4l2-core/v4l2-subdev.c
+Hunk #1 succeeded at 56 (offset 24 lines).
+
+applying patch 7.0/0009-dkms-disable-tuner-build-in-v4l2-core.patch...patching file 7.0.0/drivers/media/v4l2-core/Makefile
+Hunk #1 succeeded at 37 (offset 4 lines).
+
+applying patch 0052-module-version-conditional-symbol-namespace.patch...patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6.h
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-buttress.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-cpd.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-dma.c
+Hunk #3 succeeded at 253 (offset 2 lines).
+Hunk #4 succeeded at 310 (offset 2 lines).
+Hunk #5 succeeded at 391 (offset 2 lines).
+Hunk #6 succeeded at 460 (offset 2 lines).
+Hunk #7 succeeded at 479 (offset 2 lines).
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-fw-com.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys.c
+Hunk #1 succeeded at 1771 (offset -2 lines).
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-mmu.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6.c
+
+applying patch 7.0/0055-ipu6-k7-api-compat.patch...patching file ipu6-drivers/drivers/media/pci/intel/ipu-isys-csi2.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-queue.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys.c
+
+applying patch 0007-media-pci-ipu6-Add-D4XX-support-to-IPU6.patch...patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.h
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-subdev.c
+Hunk #1 succeeded at 25 (offset 1 line).
+Hunk #4 succeeded at 83 (offset -2 lines).
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys.h
+
+applying patch 0101-media-ipu6-isys-let-v4l2-set-default-colorspace.patch...patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
+Hunk #1 succeeded at 297 (offset 9 lines).
+
+applying patch 7.0/0065-media-ipu7-get-source-pad-according-to-csi2-.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.c
+Hunk #1 succeeded at 59 (offset 4 lines).
+Hunk #2 succeeded at 377 (offset 125 lines).
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.h
+Hunk #1 succeeded at 158 with fuzz 1 (offset 17 lines).
+
+applying patch 7.0/0066-media-ipu7-Clean-csi2-fwnode-ep-when-destroying-v4l2.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.c
+Hunk #1 succeeded at 326 (offset 124 lines).
+
+applying patch 0067-media-ipu7-sync-acpi-csi2-config-abi.patch...patching file include/media/ipu-acpi.h
+
+applying patch 0068-media-ipu7-set-csi2-port-count-by-hardware.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7.c
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7.h
+
+applying patch 7.0/0100-media-ipu7-isys-let-v4l2-set-default-colorspace.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-video.c
+Hunk #1 succeeded at 238 (offset -19 lines).
+
+applying patch 7.0/0063-media-mc-Add-INTERNAL-pad-flag.patch...patching file 7.0.0/drivers/media/mc/mc-entity.c
+patching file 7.0.0/include/uapi/linux/media.h
+
+applying patch 7.0/0006-media-pci-ipu7-Add-D4XX-support-to-IPU7.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-csi2.c
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-csi2.h
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-subdev.c
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-video.c
+Hunk #1 succeeded at 84 with fuzz 1.
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.h
+Hunk #1 succeeded at 44 (offset -1 lines).
+
+applying patch 7.0/0040-ipu-bridge-makefile.patch...patching file 7.0.0/drivers/media/pci/intel/Kconfig
+Hunk #1 succeeded at 1 with fuzz 1.
+patching file 7.0.0/drivers/media/pci/intel/Makefile
+
+applying patch 7.0/0041-ipu-bridge-bkc-backport.patch...patching file 7.0.0/drivers/media/pci/intel/ipu-bridge.c
+Hunk #1 succeeded at 36 (offset 1 line).
+Hunk #2 succeeded at 100 with fuzz 1 (offset 5 lines).
+Hunk #3 succeeded at 350 (offset 33 lines).
+Hunk #4 succeeded at 369 (offset 33 lines).
+Hunk #5 succeeded at 427 (offset 33 lines).
+Hunk #6 succeeded at 456 (offset 33 lines).
+
+applying patch 7.0/0042-ipu-bridge-add-sensor.patch...patching file 7.0.0/drivers/media/pci/intel/ipu-bridge.c
+Hunk #1 succeeded at 102 with fuzz 1 (offset 5 lines).
+
+
+Building module:
+Cleaning build area...
+make -j16 KERNELRELEASE=7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z KERNELRELEASE=7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z DRIVER_VERSION_SUFFIX='0.1' KERNEL_SRC=/lib/modules/7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/build...
+^CKernel config /lib/modules/7.0.0-mainline-preprod-v7.0-deb-overlay-260713t072449z/build/.config not found, modules won't be signed
+applying patch 0069-media-v4l2-async-register-subdev-sensor-api.patch...patching file drivers/media/v4l2-core/v4l2-fwnode.c
+Hunk #1 succeeded at 1249 (offset -6 lines).
+Hunk #2 succeeded at 1275 (offset -3 lines).
+Hunk #3 succeeded at 1293 (offset 3 lines).
+patch unexpectedly ends in middle of line
+
+applying patch 7.0/0004-dkms-v4l2-core-makefile-adaptation.patch...patching file 7.0.0/drivers/media/v4l2-core/Makefile
+patching file 7.0.0/drivers/media/v4l2-core/v4l2-dev.c
+Hunk #1 succeeded at 1256 (offset 11 lines).
+
+applying patch 7.0/0005-drivers-media-set-v4l2_subdev_enable_streams_api.patch...patching file 7.0.0/drivers/media/v4l2-core/v4l2-subdev.c
+Hunk #1 succeeded at 56 (offset 24 lines).
+
+applying patch 7.0/0009-dkms-disable-tuner-build-in-v4l2-core.patch...patching file 7.0.0/drivers/media/v4l2-core/Makefile
+Hunk #1 succeeded at 37 (offset 4 lines).
+
+applying patch 0052-module-version-conditional-symbol-namespace.patch...patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6.h
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-buttress.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-cpd.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-dma.c
+Hunk #3 succeeded at 253 (offset 2 lines).
+Hunk #4 succeeded at 310 (offset 2 lines).
+Hunk #5 succeeded at 391 (offset 2 lines).
+Hunk #6 succeeded at 460 (offset 2 lines).
+Hunk #7 succeeded at 479 (offset 2 lines).
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-fw-com.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys.c
+Hunk #1 succeeded at 1771 (offset -2 lines).
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-mmu.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6.c
+
+applying patch 7.0/0055-ipu6-k7-api-compat.patch...patching file ipu6-drivers/drivers/media/pci/intel/ipu-isys-csi2.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-queue.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys.c
+
+applying patch 0007-media-pci-ipu6-Add-D4XX-support-to-IPU6.patch...patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-csi2.h
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-subdev.c
+Hunk #1 succeeded at 25 (offset 1 line).
+Hunk #4 succeeded at 83 (offset -2 lines).
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
+patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys.h
+
+applying patch 0101-media-ipu6-isys-let-v4l2-set-default-colorspace.patch...patching file ipu6-drivers/drivers/media/pci/intel/ipu6/ipu6-isys-video.c
+Hunk #1 succeeded at 297 (offset 9 lines).
+
+applying patch 7.0/0065-media-ipu7-get-source-pad-according-to-csi2-.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.c
+Hunk #1 succeeded at 59 (offset 4 lines).
+Hunk #2 succeeded at 377 (offset 125 lines).
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.h
+Hunk #1 succeeded at 158 with fuzz 1 (offset 17 lines).
+
+applying patch 7.0/0066-media-ipu7-Clean-csi2-fwnode-ep-when-destroying-v4l2.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.c
+Hunk #1 succeeded at 326 (offset 124 lines).
+
+applying patch 0067-media-ipu7-sync-acpi-csi2-config-abi.patch...patching file include/media/ipu-acpi.h
+
+applying patch 0068-media-ipu7-set-csi2-port-count-by-hardware.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7.c
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7.h
+
+applying patch 7.0/0100-media-ipu7-isys-let-v4l2-set-default-colorspace.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-video.c
+Hunk #1 succeeded at 238 (offset -19 lines).
+
+applying patch 7.0/0063-media-mc-Add-INTERNAL-pad-flag.patch...patching file 7.0.0/drivers/media/mc/mc-entity.c
+patching file 7.0.0/include/uapi/linux/media.h
+
+applying patch 7.0/0006-media-pci-ipu7-Add-D4XX-support-to-IPU7.patch...patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-csi2.c
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-csi2.h
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-subdev.c
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys-video.c
+Hunk #1 succeeded at 84 with fuzz 1.
+patching file ipu7-drivers/drivers/media/pci/intel/ipu7/ipu7-isys.h
+Hunk #1 succeeded at 44 (offset -1 lines).
+
+applying patch 7.0/0040-ipu-bridge-makefile.patch...patching file 7.0.0/drivers/media/pci/intel/Kconfig
+Hunk #1 succeeded at 1 with fuzz 1.
+patching file 7.0.0/drivers/media/pci/intel/Makefile
+
+applying patch 7.0/0041-ipu-bridge-bkc-backport.patch...patching file 7.0.0/drivers/media/pci/intel/ipu-bridge.c
+Hunk #1 succeeded at 36 (offset 1 line).
+Hunk #2 succeeded at 100 with fuzz 1 (offset 5 lines).
+Hunk #3 succeeded at 350 (offset 33 lines).
+Hunk #4 succeeded at 369 (offset 33 lines).
+Hunk #5 succeeded at 427 (offset 33 lines).
+Hunk #6 succeeded at 456 (offset 33 lines).
+
+applying patch 7.0/0042-ipu-bridge-add-sensor.patch...patching file 7.0.0/drivers/media/pci/intel/ipu-bridge.c
+Hunk #1 succeeded at 102 with fuzz 1 (offset 5 lines).
+
+

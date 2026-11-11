@@ -1,0 +1,1 @@
+make -j16 KERNELRELEASE=6.18.37-lts-v6.18.37-deb-overlay-260713t060441z KERNELRELEASE=6.18.37-lts-v6.18.37-deb-overlay-260713t060441z DRIVER_VERSION_SUFFIX='0.1' KERNEL_SRC=/lib/modules/6.18.37-lts-v6.18.37-deb-overlay-260713t060441z/build
