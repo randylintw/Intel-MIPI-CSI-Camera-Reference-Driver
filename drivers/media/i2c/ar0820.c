@@ -463,8 +463,21 @@ static const struct media_entity_operations ar0820_subdev_entity_ops = {
         .link_validate = v4l2_subdev_link_validate,
 };
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 8, 0)
+static int ar0820_init_state(struct v4l2_subdev *sd,
+                             struct v4l2_subdev_state *state)
+{
+        ar0820_update_pad_format(&supported_modes[0],
+                                 v4l2_subdev_state_get_format(state, 0));
+        return 0;
+}
+#endif
+
 static const struct v4l2_subdev_internal_ops ar0820_internal_ops = {
         .open = ar0820_open,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 8, 0)
+        .init_state = ar0820_init_state,
+#endif
 };
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(6, 1, 0)
@@ -479,6 +492,7 @@ static void ar0820_remove(struct i2c_client *client)
         dev_dbg(&client->dev, "%s: Enter", __func__);
 
         v4l2_async_unregister_subdev(sd);
+        v4l2_subdev_cleanup(sd);
         media_entity_cleanup(&sd->entity);
         mutex_destroy(&ar0820->mutex);
         pm_runtime_disable(&client->dev);
@@ -554,10 +568,16 @@ static int ar0820_probe(struct i2c_client *client)
                 return ret;
         }
 
+        ret = v4l2_subdev_init_finalize(sd);
+        if (ret < 0) {
+                dev_err(&client->dev, "v4l2 subdev init error: %d", ret);
+                goto probe_error_media_entity_cleanup_only;
+        }
+
         ret = ar0820_identify_module(ar0820);
         if (ret) {
                 dev_err(&client->dev, "failed to find sensor: %d", ret);
-                return ret;
+                goto probe_error_subdev_cleanup;
         }
 
         if (ar0820->platform_data && ar0820->platform_data->suffix[0])
@@ -592,8 +612,11 @@ static int ar0820_probe(struct i2c_client *client)
         return 0;
 
 probe_error_media_entity_cleanup:
-        media_entity_cleanup(&ar0820->sd.entity);
         mutex_destroy(&ar0820->mutex);
+probe_error_subdev_cleanup:
+        v4l2_subdev_cleanup(&ar0820->sd);
+probe_error_media_entity_cleanup_only:
+        media_entity_cleanup(&ar0820->sd.entity);
 		
 	return ret;
 }	
@@ -608,10 +631,17 @@ static const struct i2c_device_id ar0820_id_table[] = {
 };
 MODULE_DEVICE_TABLE(i2c, ar0820_id_table);
 
+static const struct acpi_device_id ar0820_acpi_ids[] = {
+        { "AR0820" },
+        { }
+};
+MODULE_DEVICE_TABLE(acpi, ar0820_acpi_ids);
+
 static struct i2c_driver ar0820_i2c_driver = {
         .driver = {
                 .name = "ar0820",
                 .pm = &ar0820_pm_ops,
+                .acpi_match_table = ACPI_PTR(ar0820_acpi_ids),
         },
 #if LINUX_VERSION_CODE < KERNEL_VERSION(6, 6, 0)
         .probe_new = ar0820_probe,
