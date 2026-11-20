@@ -28,7 +28,7 @@
 #include <linux/sysfs.h>
 #include <linux/slab.h>
 #include <linux/pm.h>
-#include <linux/of_gpio.h>
+#include <linux/gpio/driver.h>
 
 #include "serdes.h"
 #include "regmap-retry.h"

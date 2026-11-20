@@ -6,6 +6,7 @@
 #ifndef MAX_SERDES_H
 #define MAX_SERDES_H
 
+#include <linux/bitfield.h>
 #include <linux/types.h>
 
 #include <media/mipi-csi2.h>
@@ -25,8 +26,13 @@
 	{ (reg) + 1, ((val) >> 8)  & 0xff }, \
 	{ (reg) + 2, ((val) >> 16)  & 0xff }
 
+/* Kernels >= 7.2 provide these in <linux/bitfield.h> */
+#ifndef field_get
 #define field_get(mask, val) (((val) & (mask)) >> __ffs(mask))
+#endif
+#ifndef field_prep
 #define field_prep(mask, val) (((val) << __ffs(mask)) & (mask))
+#endif
 
 #define MAX_SERDES_PHYS_MAX		4
 #define MAX_SERDES_STREAMS_NUM		4
