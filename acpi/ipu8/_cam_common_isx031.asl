@@ -7,6 +7,8 @@
  *   DESCH_SER_PATH     - Path to parent SER (e.g. "\\_SB.PC00.DESx.CHxx.SERx"), used in CSI2Bus and GpioIo
  *   DESCH_SER_GPIOREF  - GPIO controller path for SER (e.g. ^^SERx), used in gpio resources (e.g. reset-gpios)
  *   EXTERNAL_FRAME_SYNC - (Optional) Add fsin-gpio resource if defined
+ *   DESCH_CAM_FSIN_GPIO - (Optional) Add fsin-gpio only (sensor drives FSIN through the SER
+ *                         extra GPIO pin, GMSL frame sync stays disabled), e.g. Otobrite INTC031O
  *   CAM_LANES    - Number of MIPI data lanes for the camera
  */
 Method (_STA, 0, NotSerialized) // _STA: Status
@@ -90,6 +92,10 @@ Name (_DSD, Package ()          // _DSD: Device-Specific Data
         */
 #ifdef EXTERNAL_FRAME_SYNC
         Package () { "fsin-gpios", Package () { DESCH_SER_GPIOREF, 0, 1, 1 } },
+#else
+#ifdef DESCH_CAM_FSIN_GPIO
+        Package () { "fsin-gpios", Package () { DESCH_SER_GPIOREF, 0, 1, 1 } },
+#endif
 #endif
         /*
          * External GMSL frame sync control, consumed by isx031.c.
