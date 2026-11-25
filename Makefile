@@ -29,6 +29,9 @@ KERNEL_EQ_7_0 := $(shell ([ $(KERNEL_VERSION) -eq 7 ] && [ $(KERNEL_PATCHLEVEL) 
 # Check if kernel version is 7.2
 KERNEL_EQ_7_2 := $(shell ([ $(KERNEL_VERSION) -eq 7 ] && [ $(KERNEL_PATCHLEVEL) -eq 2 ]) && echo 1 || echo 0)
 
+# Check if kernel version is 7.3
+KERNEL_EQ_7_3 := $(shell ([ $(KERNEL_VERSION) -eq 7 ] && [ $(KERNEL_PATCHLEVEL) -eq 3 ]) && echo 1 || echo 0)
+
 # Check if kernel version is >= 6.17 (covers 6.17, 6.18, 7.0, ...)
 KERNEL_GE_6_17 := $(shell ([ $(KERNEL_VERSION) -gt 6 ] || ([ $(KERNEL_VERSION) -eq 6 ] && [ $(KERNEL_PATCHLEVEL) -ge 17 ])) && echo 1 || echo 0)
 
@@ -90,7 +93,7 @@ subdir-ccflags-$(CONFIG_VIDEO_INTEL_IPU6_ISYS_RESET) += -DCONFIG_VIDEO_INTEL_IPU
 LINUXINCLUDE := -I$(src)/include $(LINUXINCLUDE)
 
 ccflags-y := -I$(src)/include
-ifneq (,$(filter 1,$(KERNEL_EQ_6_17) $(KERNEL_EQ_6_18) $(KERNEL_EQ_7_0) $(KERNEL_EQ_7_2)))
+ifneq (,$(filter 1,$(KERNEL_EQ_6_17) $(KERNEL_EQ_6_18) $(KERNEL_EQ_7_0) $(KERNEL_EQ_7_2) $(KERNEL_EQ_7_3)))
 # IPU7 driver configs
 export CONFIG_VIDEO_INTEL_IPU7=m
 export CONFIG_VIDEO_INTEL_IPU7_ISYS_RESET=y
@@ -109,7 +112,9 @@ obj-$(CONFIG_VIDEO_INTEL_IPU7) += ipu7-drivers/drivers/media/pci/intel/ipu7/
 obj-$(CONFIG_VIDEO_INTEL_IPU6) += ipu6-drivers/drivers/media/pci/intel/ipu6/
 
 # Select extracted kernel tree based on running kernel
-ifeq ($(KERNEL_EQ_7_2),1)
+ifeq ($(KERNEL_EQ_7_3),1)
+KERNEL_MEDIA_TREE := 7.3.0
+else ifeq ($(KERNEL_EQ_7_2),1)
 KERNEL_MEDIA_TREE := 7.2.0
 else ifeq ($(KERNEL_EQ_7_0),1)
 KERNEL_MEDIA_TREE := 7.0.0
